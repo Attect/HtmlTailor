@@ -111,7 +111,24 @@ class HtmlTailor {
      * 添加一个裁缝设计图纸
      */
     fun addDraft(draft: DesignDraft) {
-        drafts.add(draft)
+        if(!drafts.contains(draft)) drafts.add(draft)
+    }
+
+    /**
+     * 添加多个裁缝设计图纸
+     */
+    fun addDrafts(drafts:List<DesignDraft>){
+        drafts.forEach { addDraft(it) }
+    }
+
+    fun addDraft(tagName:String,
+                 operation:Int = DesignDraft.OPERATION_KEEP,
+                 allowAttributes:Array<String>? = null,
+                 allowClass:Array<String>? = null,
+                 allowStyle:Array<String>? = null,
+                 allowUrl:Array<String>? = null,
+                 replaceTag:String? = null){
+        drafts.add(DesignDraft(tagName, operation, allowAttributes, allowClass, allowStyle, allowUrl, replaceTag))
     }
 
     /**
