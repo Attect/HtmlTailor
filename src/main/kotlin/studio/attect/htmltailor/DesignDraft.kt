@@ -98,11 +98,13 @@ class DesignDraft(
                     break
                 }
             }
-            if(!isMatch){
-                element.removeAttr(attributeName)
-                hasBlockUrl = true
+            if(isMatch){
+                return
             }
         }
+
+        element.removeAttr(attributeName)
+        hasBlockUrl
     }
 
     /**

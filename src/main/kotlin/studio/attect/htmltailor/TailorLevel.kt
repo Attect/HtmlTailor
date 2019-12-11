@@ -1,4 +1,4 @@
-package studio.attect.htmltailor;
+package studio.attect.htmltailor
 
 /**
  * 裁缝等级
@@ -6,7 +6,7 @@ package studio.attect.htmltailor;
  *
  * @author Attect
  */
-public enum TailorLevel {
+enum class TailorLevel {
     /**
      * 什么都不做处理
      */

@@ -92,8 +92,10 @@ class HtmlTailor {
         drafts.add(DesignDraft("body"))
     }
 
-
-    fun newStringTask(content: String): HtmlTailor {
+    /**
+     * 新的处理任务
+     */
+    fun newTask(content: String): HtmlTailor {
         document = Jsoup.parse(content)
         hasDangerHtmlTag = false
         hasDangerHtmlAttribute = false
@@ -154,7 +156,7 @@ class HtmlTailor {
 
     private fun doTaskWithLevel(content: String?, level: TailorLevel, blockWord: Boolean = true): String? {
         if (content.isNullOrEmpty()) return null
-        if (level != TailorLevel.NONE) newStringTask(content)
+        if (level != TailorLevel.NONE) newTask(content)
         when (level) {
             TailorLevel.NONE -> {
                 return if (blockWord) {
@@ -261,7 +263,7 @@ class HtmlTailor {
                     String::class.java -> {
                         (field.get(any) as String?)?.let { mString ->
                             if (fieldAnnotation != null) {
-                                newStringTask(mString)
+                                newTask(mString)
                                 when (fieldAnnotation.value) {
                                     TailorLevel.NONE -> {
                                         if (fieldAnnotation.blockWord) {
@@ -291,7 +293,7 @@ class HtmlTailor {
                                     }
                                 }
                             } else {
-                                if (level != TailorLevel.NONE) newStringTask(mString)
+                                if (level != TailorLevel.NONE) newTask(mString)
                                 when (level) {
                                     TailorLevel.NONE -> {
                                         if (blockWord) {
