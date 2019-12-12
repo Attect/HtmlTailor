@@ -75,7 +75,7 @@ class HtmlTailor {
                 field = document?.text()
                     ?.replace("\n", "")
                     ?.replace("\r", "")
-                    ?.replace("&", "&amp;") //这个符号要在前
+                    //?.replace("&", "&amp;") //这个符号要在前
                     ?.replace("\"", "&quot;")
                     ?.replace("'", "&apos;")
                     ?.replace("<", "&lt;")
