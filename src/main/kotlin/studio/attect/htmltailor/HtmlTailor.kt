@@ -281,21 +281,21 @@ class HtmlTailor {
             }
             TailorLevel.SAFE -> {
                 return if (blockWord) {
-                    safeString.blockWord()
+                    safeString?.blockWord()
                 } else {
                     safeString
                 }
             }
             TailorLevel.TEXT_WITH_BREAK_LINE -> {
                 return if (blockWord) {
-                    textWithBreakLine.blockWord()
+                    textWithBreakLine?.blockWord()
                 } else {
                     textWithBreakLine
                 }
             }
             TailorLevel.TEXT -> {
                 return if (blockWord) {
-                    textString.blockWord()
+                    textString?.blockWord()
                 } else {
                     textString
                 }
@@ -386,21 +386,21 @@ class HtmlTailor {
                                     }
                                     TailorLevel.SAFE -> {
                                         if (fieldAnnotation.blockWord) {
-                                            field.set(any, safeString.blockWord())
+                                            field.set(any, safeString?.blockWord())
                                         } else {
                                             field.set(any, safeString)
                                         }
                                     }
                                     TailorLevel.TEXT_WITH_BREAK_LINE -> {
                                         if (fieldAnnotation.blockWord) {
-                                            field.set(any, textWithBreakLine.blockWord())
+                                            field.set(any, textWithBreakLine?.blockWord())
                                         } else {
                                             field.set(any, textWithBreakLine)
                                         }
                                     }
                                     TailorLevel.TEXT -> {
                                         if (fieldAnnotation.blockWord) {
-                                            field.set(any, textString.blockWord())
+                                            field.set(any, textString?.blockWord())
                                         } else {
                                             field.set(any, textString)
                                         }
@@ -416,21 +416,21 @@ class HtmlTailor {
                                     }
                                     TailorLevel.SAFE -> {
                                         if (blockWord) {
-                                            field.set(any, safeString.blockWord())
+                                            field.set(any, safeString?.blockWord())
                                         } else {
                                             field.set(any, safeString)
                                         }
                                     }
                                     TailorLevel.TEXT_WITH_BREAK_LINE -> {
                                         if (blockWord) {
-                                            field.set(any, textWithBreakLine.blockWord())
+                                            field.set(any, textWithBreakLine?.blockWord())
                                         } else {
                                             field.set(any, textWithBreakLine)
                                         }
                                     }
                                     TailorLevel.TEXT -> {
                                         if (blockWord) {
-                                            field.set(any, textString.blockWord())
+                                            field.set(any, textString?.blockWord())
                                         } else {
                                             field.set(any, textString)
                                         }
