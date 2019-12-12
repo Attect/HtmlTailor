@@ -50,4 +50,14 @@ internal class HtmlTailorTest {
         tailor.doIt(sampleBean)
         println(sampleBean)
     }
+
+    @Test
+    fun dataClassTest(){
+        val myData = OneData(123, sample)
+        println()
+        println("dataClassTest")
+        HtmlTailor.defaultTailor.doIt(myData)
+        println(myData.toString())
+        println("===================")
+    }
 }

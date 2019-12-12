@@ -4,6 +4,7 @@ plugins {
 
 group 'studio.attect'
 version '0.1'
+java.sourceCompatibility = JavaVersion.VERSION_12
 
 repositories {
     mavenCentral()

@@ -370,11 +370,11 @@ class HtmlTailor {
 
         any::class.java.declaredFields.forEach { field ->
             val fieldAnnotation = field.getAnnotation(HtmlTailorMark::class.java)
-            if (!Modifier.isTransient(field.modifiers)) {
+            if (!Modifier.isTransient(field.modifiers) && !Modifier.isStatic(field.modifiers)) {
                 val accessible = field.isAccessible
-                if (!accessible) field.isAccessible = true
                 when (field.type) {
                     String::class.java -> {
+                        if (!accessible) field.isAccessible = true
                         (field.get(any) as String?)?.let { mString ->
                             if (fieldAnnotation != null) {
                                 newTask(mString)
@@ -442,7 +442,18 @@ class HtmlTailor {
 
                     }
                     else -> {
-                        if (!field.type.isPrimitive) {
+                        if (
+                            !field.type.isPrimitive &&
+                            field.type != Integer::class.java &&
+                            field.type != java.lang.Boolean::class.java &&
+                            field.type != java.lang.Double::class.java &&
+                            field.type != java.lang.Float::class.java &&
+                            field.type != java.lang.Long::class.java &&
+                            field.type != java.lang.Byte::class.java &&
+                            field.type != java.lang.Short::class.java
+                        ) {
+
+                            if (!accessible) field.isAccessible = true
                             if (fieldAnnotation != null) {
                                 doIt(field.get(any), fieldAnnotation.value, fieldAnnotation.blockWord)
                             } else {
@@ -451,6 +462,7 @@ class HtmlTailor {
                         }
                     }
                 }
+                field.isAccessible = accessible
             }
         }
     }
