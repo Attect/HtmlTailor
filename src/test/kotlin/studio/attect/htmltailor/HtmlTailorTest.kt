@@ -1,13 +1,23 @@
 package studio.attect.htmltailor
 
 import org.junit.jupiter.api.Test
+import java.io.File
 
 
 internal class HtmlTailorTest {
 
     @Test
     fun newTask() {
-
+        val htmlContent = File("src/test/resources/sample.html").readText()
+        val tailor = HtmlTailor.defaultTailor.newTask(htmlContent)
+        val dir = File("src/test/resources/out")
+        if(!dir.isDirectory) dir.delete()
+        if(!dir.exists()){
+            dir.mkdir()
+        }
+        File(dir.absolutePath+"/safeString.html").writeText(tailor.safeString?:"")
+        File(dir.absolutePath+"/textWithBreakLine.html").writeText(tailor.textWithBreakLine?:"")
+        File(dir.absolutePath+"/textString.html").writeText(tailor.textString?:"")
     }
 
     @Test
