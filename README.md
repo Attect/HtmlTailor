@@ -132,7 +132,7 @@ HtmlTailor.blockWords.add("fuck")
 ### 设定屏蔽词占位内容
 
 ```kotlin
-Html.Tailor.blockWordPatch = "[违规内容]"
+HtmlTailor.blockWordPatch = "[违规内容]"
 ```
 
 默认为两个星号 ** 
