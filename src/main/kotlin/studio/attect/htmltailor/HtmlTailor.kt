@@ -262,7 +262,7 @@ class HtmlTailor {
                 if (designDraft.hasRemoveStyle) hasDangerHtmlStyle = true
                 if (isHandled) break
             }
-            if (!isHandled) element.remove()
+            if (!isHandled && element.parentNode() != null) element.remove()
         }
 
         return document?.body()?.html() ?: ""
