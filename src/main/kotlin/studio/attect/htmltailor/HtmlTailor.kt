@@ -265,7 +265,10 @@ class HtmlTailor {
             if (!isHandled && element.parentNode() != null) kotlin.runCatching { element.remove() }
         }
 
-        return document?.body()?.html() ?: ""
+        kotlin.runCatching {
+            return document?.body()?.html()?: document?.html() ?: ""
+        }
+        return ""
     }
 
     private fun doTaskWithLevel(content: String?, level: TailorLevel, blockWord: Boolean = true): String? {
