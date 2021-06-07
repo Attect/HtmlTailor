@@ -124,7 +124,7 @@ class DesignDraft(
                         val value = splitArray[1].trim()
                         //style中可包含url @see https://developer.mozilla.org/zh-CN/docs/Web/CSS/url
                         var urlCheck = false
-                        val checkUrlValue = value.toLowerCase().replace(" ","").replace("\r","").replace("\n","")
+                        val checkUrlValue = value.lowercase().replace(" ","").replace("\r","").replace("\n","")
                         if(!allowUrl.isNullOrEmpty() && checkUrlValue.contains("url(")){
                             val cutHeadUrlString = checkUrlValue.replace("\"","").replace("'","").substring(checkUrlValue.indexOf("url(")+4)
                             for(i in allowUrl.indices){
